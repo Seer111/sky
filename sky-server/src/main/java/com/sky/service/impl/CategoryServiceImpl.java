@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -87,5 +88,13 @@ public class CategoryServiceImpl implements CategoryService {
      */
     public void delete(Long id) {
         categoryMapper.delete(id);
+    }
+
+    /**
+     * 根据类型查询分类
+     * @param type
+     */
+    public List<Category> getByType(Integer type) {
+        return categoryMapper.getByType(type);
     }
 }

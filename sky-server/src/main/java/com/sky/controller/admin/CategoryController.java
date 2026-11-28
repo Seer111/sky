@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin/category")
 @Slf4j
@@ -82,5 +84,18 @@ public class CategoryController {
         log.info("根据id删除分类: {}",id);
         categoryService.delete(id);
         return Result.success();
+    }
+
+    /**
+     * 根据类型查询分类
+     * @param type
+     * @return
+     */
+    @GetMapping("/list")
+    @ApiOperation("根据类型查询分类")
+    public Result<List<Category>> getByType(Integer type){
+        log.info("根据类型查询分类: {}", type);
+        List<Category> list = categoryService.getByType(type);
+        return Result.success(list);
     }
 }
