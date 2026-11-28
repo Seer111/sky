@@ -24,4 +24,9 @@ public interface CategoryMapper {
      */
     Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
 
+    /**
+     * 根据菜品id启用禁用
+     * @param category
+     */
+    void update(Category category);
 }

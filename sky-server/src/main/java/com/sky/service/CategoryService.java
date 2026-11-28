@@ -18,4 +18,16 @@ public interface CategoryService {
      * @return
      */
     PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 根据菜品id启用禁用
+     * @param id
+     */
+    void startOrStop( Integer status, Long id);
+
+    /**
+     * 修改分类
+     * @param categoryDTO
+     */
+    void update(CategoryDTO categoryDTO);
 }

@@ -53,4 +53,31 @@ public class CategoryServiceImpl implements CategoryService {
         Page<Category> page = categoryMapper.pageQuery(categoryPageQueryDTO);
         return new PageResult(page.getTotal(), page.getResult());
     }
+
+    /**
+     * 根据菜品id启用禁用
+     * @param id
+     */
+    public void startOrStop(Integer status, Long id) {
+        Category category = new Category();
+        category.setStatus(status);
+        category.setId(id);
+
+        categoryMapper.update(category);
+    }
+
+    /**
+     * 修改分类
+     * @param categoryDTO
+     */
+    public void update(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDTO, category);
+
+        category.setUpdateTime(LocalDateTime.now());
+        category.setUpdateUser(BaseContext.getCurrentId());
+
+        categoryMapper.update(category);
+
+    }
 }
